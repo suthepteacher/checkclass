@@ -1,0 +1,111 @@
+<ion-view view-title="เช็คชื่อเข้าเรียน" class="item-text-wrap">
+	<ion-nav-buttons side="left">
+	 	<button class="button button-clear" ng-click="goClassAttend()"><i class="icon ion-arrow-left-c" ></i></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+        <div class="no-padding" ng-show = "alldatas.length">
+            <button class="button button-icon icon ion-ios-search no-padding" ng-click="FilterEachClass()"></button>
+        </div>
+        &nbsp; 
+        <div class ="no-padding" ng-show = "alldatas.length">
+            <button class="button button-icon icon ion-android-checkbox-outline no-padding" ng-click="popoccurrcheckall.show($event)"></button>
+        </div> &nbsp; 
+        
+       <!--<button class="button button-icon icon-left ion-ios-barcode" ng-click="scanBarcode()">
+        </button> -->
+        <div class ="no-padding" ng-show = "alldatas.length">
+        <img class="button button-icon no-padding" width = "35px" height="5px" src="img/barcode.png" ng-click="scanBarcode()"> 
+        </div>
+  	</ion-nav-buttons>
+
+
+
+<!--   <ion-content class="padding"> -->
+    <ion-content padding="false" overflow-scroll="false">
+      <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItemsAll()">
+      </ion-refresher>  
+  <p class="text-center" ng-hide="dataclassLoaded">
+      <ion-spinner icon="spiral"></ion-spinner>
+  </p>
+  <div ng-show="dataclassLoaded">
+    <div class = "card no-results" ng-hide="showclassintro">
+      <div class="item item-divider">
+         <h2"><b>ไม่มีข้อมูลนักศึกษา</b></h2>
+      </div>
+        <div class="item item-text-wrap">
+          <h3 style="padding-left: 10px">กรุณาเพิ่มคาบเรียนและเช็คสถานะการเข้าเรียนก่อน</h3>
+          <br/>
+          <h3 style="padding-left: 10px">ไปที่ <b class = "custom-icon2">Tab นักศึกษา</b> และคลิกที่ปุ่ม
+          <i class="icon ion-plus-round custom-icon1"></i> เพื่อเพิ่มรายชื่อนักศึกษา
+          </h3> 
+        </div>
+    </div>
+    <ion-list calss="no-padding">
+      <!--<ion-item class="item-avatar-left no-padding" collection-repeat="data in alldatas" type="item-text-wrap" item-height="75px" item-width="100%">-->
+       <ion-item class="item-avatar-left no-padding" ng-repeat="data in alldatas" type="item-text-wrap">
+        <img ng-if="chunkedData(data.stdnameThai) === 2" src="img/girl.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 1" src="img/boy.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 4" src="img/girl.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 5" src="img/girl.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 3" src="img/boy.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 8" src="img/girl.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 7" src="img/boy.png">
+        <img ng-if="chunkedData(data.stdnameThai) === 0" src="img/other.png">
+        
+        <div class="row no-padding">
+        <div class="col text-left no-padding col-90">
+        <span class="item-text-wrap "><p>{{$index+1}}. รหัส {{data.stdid}} </p></span>
+        <p style="font-size:16px;color:#0039e6">{{data.stdnameThai}}</p>
+        </div>
+        <!--<a class="button button-small button-block" ng-click="goStatus($event,data.id)" ng-class="{'button-balanced': data.status == 'มาเรียน', 'button-assertive': data.status == 'สาย'}" > {{data.status}} </a>-->
+        <!--<button class="button button-calm" modal-select="" ng-model="someSetModel" modal-title="Select a character" options="dataoccurr" option-property="statusname" >
+            {{ someSetModel || &apos;สถานะ&apos;}}
+            <div class="option">
+              <h2>{{option.statusname}}</h2>
+            </div>
+        </button>-->
+                             
+  <div class="col text-right no-padding">
+  <button id ="{{cid}}_{{data.id}}" class="button bottom-right button-calm button-text-center button-small" style="float: bottom;background-color: {{data.color }};width: 50px" ng-click="goStatus($event,{{data.id}},$index)" >
+                     {{data.status}}
+                  </button>
+</div>
+</div>
+       
+     
+       
+         
+<!-- <div class="buttons">
+          <button class="button button-energized">
+            <i class="icon ion-android-locate"></i>
+          </button>
+          <button class="button button-dark">
+            <i class="icon ion-android-arrow-forward"></i>
+          </button>
+        </div> -->
+
+<!--         <ion-option-button class="button-energized" ng-click="editStudent(data)">Edit</ion-option-button>
+        <ion-option-button class="button-assertive" ng-click="deleteStudent(data)">Delete</ion-option-button> -->
+      </ion-item>
+    </ion-list>
+
+<!--      <div class = "card" ng-if="alldatas == undefined" class="no-results">
+         <p style="padding: 10px">No Students Here.</p> -->
+    </div>
+  </ion-content>
+
+<ion-footer-bar class="bar-positive">
+
+  <div class="row no-padding flex-container">
+  <div class="col-30 text-left no-padding flexbox">
+      <button class="button button-small button-light" ng-click="showcal($event)";> สรุปสถานะ </button>
+  </div> 
+   <div align="center" class="col text-center flexbox" >
+  {{dtvalue | amDateFormat: 'dddd Do MMMM YYYY' }} เวลา {{dtvalue | amDateFormat:'kk:mm'}}
+  </div>
+  </div>
+  </ion-footer-bar>
+
+
+
+</ion-view>

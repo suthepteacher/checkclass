@@ -1,0 +1,51 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">สรุปสถานะการเข้าเรียน</h1>
+        <button ng-click="closeshowtableoccurr()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+<ion-list >
+<ion-item class="item-avatar-left" type="item-text-wrap">
+            <img ng-if="imageid === 2" src="img/girl.png">
+            <img ng-if="imageid === 1" src="img/boy.png">
+            <img ng-if="imageid === 4" src="img/girl.png">
+            <img ng-if="imageid === 5" src="img/girl.png">
+            <img ng-if="imageid === 3" src="img/boy.png">
+            <img ng-if="imageid === 0" src="img/other.png">
+             <img ng-if="imageid === 8" src="img/girl.png">
+             <img ng-if="imageid === 7" src="img/boy.png">
+            <p >รหัส {{idstd}}</p>
+            <p class="item-text-wrap" style="color:#0039e6;font-size:16px;font-weight: 500">{{namestd}}</p>
+    </ion-item>
+</ion-list >
+   <div ng-show="datashowtableLoaded"> 
+    <div class = "card no-results" ng-hide="showtableintro">
+      <div class="item item-divider">
+         <h2"><b>ไม่มีข้อมูล</b></h2>
+      </div>
+        <div class="item item-text-wrap">
+          <h3 style="padding-left: 10px">ไม่มีข้อมูล</h3>
+        </div>
+    </div>
+ <div class="row header" >
+              <div class="col col-20 text-center " style="background-color: lightgrey;border: 1px solid;border-top-left-radius: 15px;">คาบ</div>
+              <div class="col text-center" style="background-color: lightgrey;border: 1px solid;border-top-left-radius: 15px;" ng-repeat="data in dataoccurr"><p class="flexbox">{{data.statusname}}<p></div>
+              <!--<div class="col text-center" style="background-color: lightgrey;border: 1px solid;border-top-left-radius: 15px;font-size:10px;" ng-repeat="data in dataStatusprepare">{{data.statusname}}</div>-->
+        </div>
+        <div class="row" ng-repeat="data in datatableoccurrbydate | orderBy: sortClasstable : false :reverse">
+              <div class="col col-20" style="background-color: lightgreen;border: 1px solid;font-size:10px;word-break: break-all;">
+              <p></p>
+              <p class="brt">ครั้งที่ {{$index+1}}</p>
+              <p class="brt">{{data.Datevalue | amDateFormat:'Do/MM/YYYY' }}</p>
+              <p class="brt">{{data.Datevalue | amDateFormat:'HH:mm' }}</p></div>
+              <div class="col text-center " style="background-color: lightgreen;border: 1px solid;" ng-repeat="t1 in data.arrayocc"><div class="row flex-container no-padding"><div class="col text-center flexbox"><p class="padding"><i class="icon ion-android-done flexbox" ng-if="t1.value === 1"></i></p>
+              </div>
+              </div>
+              </div>
+              </div>
+        </div>
+    </div>
+
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,44 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">สรุปสถานะการเข้าเรียนรายคาบ</h1>
+        <button ng-click="closegraphresult()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+    <div class="padding">
+    <p></p>
+    <p style="font-size:16px;color:#0039e6">วัน{{showdate | amDateFormat:'dddd Do MMMM YYYY' }}</p>
+    <p style="font-size:16px;color:#0039e6">เวลา {{showdate | amDateFormat:'kk:mm' }} น.</p>
+    <p class="wrap item-text-wrap"><u><b>คำอธิบายเพิ่มเติม</b></u>  {{mark}}</p>
+    </div>  
+   <div ng-show="datashowgraphLoaded"> 
+    <div class = "card no-results" ng-hide="showgraphintro">
+      <div class="item item-divider">
+         <h2"><b>ไม่มีข้อมูลการเข้าเรียนรายคาบ</b></h2>
+      </div>
+        <div class="item item-text-wrap">
+          <h3 style="padding-left: 10px">กรุณาเช็คสถานะการเข้าเรียนก่อน</h3>
+        </div>
+    </div>
+    <canvas id="pie" class="chart chart-pie"
+         chart-data="datagraph" chart-labels="labelsgraph" chart-options="options" chart-colors="colorsgraph">
+   </canvas>
+<ion-list >
+   <ion-item ng-if ="data.name !== 'ไม่ระบุ'"  class="item-button-left" ng-repeat="data in sumOccforgraph" type="item-text-wrap">
+    <button class="button customIconSound" style="float: bottom;background-color:{{data.colorg }}"></button>
+    <div class="row no-padding">
+        <div class="col col-60 text-left no-padding"><p>{{data.name}}</p></div>
+        <div class="col text-left no-padding" ><p>{{data.amount}} คน </p></div>
+    </div> 
+  </ion-item>
+  <ion-item ng-if ="data.name === 'ไม่ระบุ'"  class="item-button-left" ng-repeat="data in sumOccforgraph" type="item-text-wrap">
+    <button class="button customIconSound" style="float: bottom;background-color:{{data.colorg }}"></button>
+    <div class="row no-padding">
+        <div class="col col-60 text-left no-padding"><p>{{data.name}}</p></div>
+        <div class="col text-left no-padding" ><p>{{data.amount}} คน </p></div>
+    </div> 
+  </ion-item>
+  </ion-list>
+ 
+    </ion-content>
+</ion-modal-view>

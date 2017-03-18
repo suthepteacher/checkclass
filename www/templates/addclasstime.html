@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">เพิ่มคาบเรียน</h1>
+        <button ng-click="closeAddclasstime()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+       <form class="list" name="form" >
+<div class="item item-divider">กดปฏิทินเพื่อเลือกวัน-เวลา</div>
+  <div class="row padding">
+  <div class="col-30 text-left ">
+      <button ion-button round class="button  button-icon button-small" ng-click="showDatePicker()"><i class="icon ion-ios-calendar positive" ></i></button>
+      <input ng-model="post.dateclassvalue" type="hidden" " required>
+  </div> 
+   <div class="col text-left ">
+   <span ng-click="showDatePicker()">{{post.dateclassvalue | amDateFormat:'dddd, Do MMMM YYYY'}} {{post.dateclassvalue | amDateFormat:'kk:mm' }} </span>
+  </div>
+  </div>
+  </div>
+         <label class="item item-input item-stacked-label">
+            <span class="input-label">คำอธิบายเพิ่มเติม</span>
+            <textarea rows="5" ng-model="post.noticeText" ></textarea>
+        </label>
+            <div class="padding-left padding-right">
+                <button ng-click="addclasstimevalue()" class="button button-positive button-outline button-block" ng-disabled="form.$invalid"><i class="icon ion-ios-plus-outline">   เพิ่มคาบเรียน</i></button>
+            </div>
+
+        </form>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,44 @@
+<ion-view view-title="สรุปสถานะการเข้าเรียนรายคาบ">
+
+	<ion-nav-buttons side="left">
+	 	<button class="button button-clear" ng-click="gotoreport()"><i class="icon ion-arrow-left-c" ></i></button>
+	</ion-nav-buttons>
+  <ion-nav-buttons side="right">
+  <button class="button button-icon icon ion-ios-search no-padding" ng-click="showFilterBarresultclass()"></button>
+        </button>
+  </ion-nav-buttons>
+
+	
+	<!-- <ion-content class="padding"> -->
+	<ion-content padding="false" overflow-scroll="false">	
+    <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItemsClass()"></ion-refresher>
+     <p class="text-center" ng-hide="dataclassattendLoaded">
+        <ion-spinner icon="spiral"></ion-spinner>
+    </p>
+    <div ng-show="dataclassattendLoaded"> 
+    <div class = "card no-results" ng-hide="showclassattendintro">
+      <div class="item item-divider">
+         <h2"><b>ไม่มีข้อมูลการเข้าเรียน</b></h2>
+      </div>
+        <div class="item item-text-wrap">
+          <h3 style="padding-left: 10px">กรุณาเพิ่มคาบเรียนและเช็คสถานะการเข้าเรียนก่อน</h3>
+        </div>
+    </div>
+    <ion-list >
+<ion-item class="item item-avatar item-icon-right item-text-wrap " ng-repeat="data in dataClass | orderBy: sortClass : true" ng-click="showgraph(data.id)">
+      <img src="img/time.png">
+       <div class="row no-padding flex-container">
+              <div class="col col-80 text-left no-padding"> 
+              <p style="color:#0039e6">{{data.datestime | amDateFormat:'dddd, Do MMMM YYYY' }}</p>
+              <p style="color:#0039e6">เวลา {{data.datestime | amDateFormat:'kk:mm' }} น.</p>
+              <p class="wrap item-text-wrap"><u><b>คำอธิบายเพิ่มเติม</b></u>  {{data.note}}</p></div>
+              <div class="col text-right flexbox no-padding" ><p>ครั้งที่ {{dataClass.length- $index }}<p></div>
+          </div>
+      <i class="icon ion-ios-arrow-right"></i>
+      
+    </ion-item>
+ </ion-list >
+
+    </div> 
+	</ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+<ion-popover-view>
+    <ion-content>
+<ion-list >
+   <ion-item class="padding"  type="item-text-wrap">
+   <p>จำนวนนักศึกษาทั้งหมด {{alldatas.length}} คน</p>
+  </ion-item>
+   <ion-item ng-if ="data.name !== 'ไม่ระบุ'"  class="padding" ng-repeat="data in sumOcc" type="item-text-wrap">
+   <p>{{data.name}} {{data.amount}} คน </p>
+  </ion-item>
+  <ion-item ng-if ="data.name === 'ไม่ระบุ'"  class="padding" ng-repeat="data in sumOcc" type="item-text-wrap">
+   <p>{{data.name}} {{data.amount}} คน </p>
+  </ion-item>
+  </ion-list>
+  </ion-content>
+</ion-popover-view>

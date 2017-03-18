@@ -1,0 +1,73 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">นำเข้าไฟล์รายชื่อนักศึกษา</h1>
+        <button ng-click="closeImport()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+<form class="list" id="orderForm" name="form" >
+<div class="row padding" style="background-color: lightgrey">
+<div class="fileUpload">
+    <span>เลือกไฟล์ CSV</span>
+    <input id="uploadBtn" type="file" class="upload" accept="text/comma-separated-values" onchange="angular.element(this).scope().saveFile(this.files)" ng-click="someFunc()" />
+</div>
+<div style="display: inline-block;"> 
+<input class="fileinput"  id="uploadFile" placeholder="No file chosen" disabled="disabled" style="width: 200px;"  required />
+</div> 
+</div>
+          <div class="padding-left padding-right">
+           <button class="button button-positive button-outline button-block" id="Btnupfile" ng-click="uploadFile()" disabled="disabled"> <i class="icon ion-archive"  >  นำเข้าไฟล์</i></button>
+          </div>
+
+        <div class = "card no-results" >
+            <div class="item item-divider">
+                 <h2"><b>คำแนะนำ</b></h2>
+            </div>
+        <div class="item item-text-wrap ">
+        <ul class="my-nav padding-left">
+         <div class="row padding-left">
+        <li>สำหรับไฟล์รายชื่อนักศึกษาที่จะนำเข้าต้องเป็นไฟล์ CSV เท่านั้น</li> 
+        </div>
+         <div class="row padding-left">
+        <li>คอลัมน์ในไฟล์ CSV ประกอบด้วย 2 คอลัมน์ ดังภาพ</li> 
+        </div>
+        <div class="padding-left">
+        <div class="padding-left">
+        <div class="row header padding-left">
+              <div class="col col-40 text-center" style="background-color: lightgrey;border: 1px solid;"><p style="font-size:16px;font-weight: 700">รหัส</p></div>
+              <div class="col col-60 text-center" style="background-color: lightgrey;border: 1px solid;"><p style="font-size:16px;font-weight: 700">ชื่อ-สกุล</p>
+        </div>
+        </div>
+    
+         <div class="row header padding-left">
+              <div class="col col-40 text-center no-padding" style="background-color: #e6e6ff;border: 1px solid;"><p> 0001</p></div>
+              <div class="col col-60 text-left no-padding" style="background-color: #e6e6ff;border: 1px solid;"><p>&nbsp; &nbsp;  นายอยู่ดี มีสุข<p></div>
+          </div>
+          <div class="row header padding-left">
+              <div class="col col-40  text-center  no-padding" style="border: 1px solid;"><p> 0002</p></div>
+              <div class="col col-60 text-left no-padding" style="border: 1px solid;"><p>&nbsp; &nbsp;  นางสาวเมตตา กรุณา<p></div>
+          </div>
+           <div class="row header padding-left">
+              <div class="col col-40  text-center no-padding" style="background-color: #e6e6ff;border: 1px solid;"><p> 0003</p></div>
+              <div class="col col-60 text-left no-padding" style="background-color: #e6e6ff;border: 1px solid;"><p>&nbsp; &nbsp;  นายสุข ทุกข์ไกล<p></div>
+          </div>
+          <span></span>
+            <div class="row padding-left">
+              <div class="col col-25  text-left no-padding" ><p><u>หมายเหตุ</u></p></div>
+              <div class="col  text-left no-padding" ><p>  จำเป็นต้องใส่หัวตาราง แต่สามารถใส่ข้อความใดๆก็ได้ <p></div>
+          </div>
+          <div class="row padding-left">
+              <div class="col col-25  text-left no-padding" ><p></p></div>
+              <div class="col  text-left no-padding" ><p>  สามารถเขียนชื่อ นาย/นางสาว/น.ส./ด.ช./ด.ญ./เด็กชาย/เด็กหญิง นำหน้าชื่อสกุลได้<p></div>
+          </div> 
+            </div>
+             <li>สำหรับข้อความภาษาไทยการบันทึกไฟล์ CSV ต้องเลือกชนิดเป็น Unicode หรือ UTF-8</li>
+            </div>
+            
+            </div>
+            </div>
+
+
+            </form>
+    </ion-content>
+</ion-modal-view>

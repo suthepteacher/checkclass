@@ -1,0 +1,39 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">เพิ่มสถานะการเข้าเรียน</h1>
+        <button ng-click="closeaddcurrence()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+     <form class="list" name="form" >
+          <ion-item class="item item-button-right no-padding">
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">ชื่อสถานะการเข้าเรียน</span>
+                <input ng-model="post.statusname" type="text" placeholder="" required>
+            </label>
+             <label class="item item-input item-stacked-label">
+                <span class="input-label">กดปุ่มเพื่อเลือกสี</span>
+            <div class="buttons">
+                
+                <button class="button button-assertive button-small" color-picker="" color-mode="name" ng-model="post.color"  modal-title="โปรดเลือกสี"  color-box="{{post.color}}"> 
+                </button>
+
+                </div>
+                 <!--<input ng-model="post.color"  type="hidden"  placeholder="" required>-->
+            </label>
+             <label class="checkbox padding-left">
+             <span class="input-label">ใช้คำนวณในการเข้าชั้นเรียน</span>
+                 <input type="checkbox" 
+                 ng-model="post.calpresent" 
+                 ng-true-value="1" ng-false-value="0"
+                 ng-checked="post.calpresent">
+               </label> 
+               <div>
+             
+            </ion-item>
+            <div class="padding-left padding-right">
+                <button ng-click="addnewoccurrence()" class="button button-positive button-outline button-block" ng-disabled="form.$invalid"><i class="icon ion-ios-plus-outline">   เพิ่มสถานะการเข้าเรียน</i></button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

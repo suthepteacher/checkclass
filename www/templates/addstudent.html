@@ -1,0 +1,22 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">เพิ่มนักศึกษา</h1>
+        <button ng-click="closeAdd()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+        <form class="list" name="form" >
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">รหัส</span>
+                <input ng-model="post.stdid" type="text" placeholder="5750110031" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">ชื่อ-สกุล</span>
+                <input ng-model="post.stdnamelastnameThai" type="text" placeholder="นายดำดี สีไม่ตก" required>
+            </label>
+            <div class="padding-left padding-right">
+                <button ng-click="add()" class="button button-positive button-outline button-block" ng-disabled="form.$invalid"><i class="icon ion-ios-plus-outline">   เพิ่มนักศึกษา</i></button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

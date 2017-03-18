@@ -1,0 +1,50 @@
+<ion-view view-title="คาบเรียน">
+
+	<ion-nav-buttons side="left">
+	 	<button class="button button-clear" ng-click="gotabStudent()"><i class="icon ion-arrow-left-c" ></i></button>
+	</ion-nav-buttons>
+ 
+	<ion-nav-buttons side="right">
+        <button class="button icon-left ion-plus-round" ng-click="goAddclasstime()">
+        </button>
+        <button class="button button-icon ion-android-more-vertical" ng-click="popClass.show($event)">
+        </button>
+  	</ion-nav-buttons>
+	<ion-content padding="false" overflow-scroll="false">	
+    <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItemsClass()"></ion-refresher>
+     <p class="text-center" ng-hide="dataclassattendLoaded">
+        <ion-spinner icon="spiral"></ion-spinner>
+    </p>
+    <div ng-show="dataclassattendLoaded"> 
+    <div class = "card no-results" ng-hide="showclassattendintro">
+      <div class="item item-divider">
+         <h2"><b>ไม่มีคาบเรียน</b></h2>
+      </div>
+        <div class="item item-text-wrap">
+          <h3 style="padding-left: 10px">กรุณาเพิ่มคาบเรียนเพื่อเช็คชื่อเข้าชั้นเรียน</h3>
+          <br/>
+          <h3 style="padding-left: 10px">คลิกที่ปุ่ม 
+          <i class="icon ion-plus-round custom-icon1"></i> เพื่อเพิ่ม วัน-เวลา เรียน
+          </h3> 
+        </div>
+    </div>
+   
+    <ion-list >
+      <ion-item class="item-avatar-left item-icon-right item-text-wrap no-padding" ng-repeat="data in dataClass | orderBy: sortClass : true" ng-click="click(data)">
+         <img src="img/time.png">
+       <div class="row no-padding flex-container">
+              <div class="col col-75 text-left no-padding"> 
+              <p ng-hide="true">{{data.showdateval}}</p>
+              <p style="color:#0039e6">{{data.datestime | amDateFormat:'dddd, Do MMMM YYYY' }}</p>
+              <p style="color:#0039e6">เวลา {{data.datestime | amDateFormat:'kk:mm' }} น.</p>
+              <p class="wrap item-text-wrap"><u><b>คำอธิบายเพิ่มเติม</b></u>  {{data.note}}</p></div>
+              <div class="col text-right flexbox no-padding" ><p>ครั้งที่ {{dataClass.length- $index }}<p></div>
+          </div>
+      <i class="icon ion-ios-arrow-right"></i>
+        <ion-option-button class="button-energized" ng-click="editClass(data)">แก้ไข</ion-option-button>
+        <ion-option-button class="button-assertive" ng-click="deleteClass(data)">ลบ</ion-option-button>
+      </ion-item>
+    </ion-list>
+    </div> 
+	</ion-content>
+</ion-view>

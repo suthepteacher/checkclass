@@ -1,0 +1,61 @@
+<ion-view view-title="สรุปสถานะการเข้าเรียนรายบุคคล">
+
+	<ion-nav-bar class="bar-positive">
+  <ion-nav-buttons side="left">
+	 	<button class="button button-clear" ng-click="gotoreport()"><i class="icon ion-arrow-left-c" ></i></button>
+	</ion-nav-buttons>
+  <ion-nav-buttons side="right">
+   <button class="button button-icon icon ion-ios-search no-padding" ng-click="showFilterBarresultperson()"></button>
+  </ion-nav-buttons>
+</ion-nav-bar>
+	
+	<!-- <ion-content class="padding"> -->
+  <ion-content class="has-header" padding="false" overflow-scroll="false">
+    <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()"></ion-refresher> 
+    <!--<p class="text-center" ng-hide="datareportLoaded">
+         <ion-spinner icon="spiral"></ion-spinner>
+      </p>-->
+    <div ng-show="datareportLoaded">
+        <div class = "card no-results" ng-hide="datareportLoadedintro">
+            <div class="item item-divider">
+             <h2"><b>ไม่มีข้อมูลการเข้าเรียน</b></h2>
+          </div>
+            <div class="item item-text-wrap">
+              <h3 style="padding-left: 10px">กรุณาเพิ่มคาบเรียนและเช็คสถานะการเข้าเรียนก่อน</h3>
+            </div>
+        </div> 
+        <ion-list>
+          <ion-item class="item item-avatar-left" collection-repeat="data in datareportfinal " type="item-text-wrap" ng-click="showtable(data.indexstd)"  item-height="110px" item-width="100%">
+            <img ng-if="chunkedData(data.name) === 2" src="img/girl.png">
+                <img ng-if="chunkedData(data.name) === 1" src="img/boy.png">
+                <img ng-if="chunkedData(data.name) === 4" src="img/girl.png">
+                <img ng-if="chunkedData(data.name) === 5" src="img/girl.png">
+                <img ng-if="chunkedData(data.name) === 3" src="img/boy.png">
+                <img ng-if="chunkedData(data.name) === 8" src="img/girl.png">
+                <img ng-if="chunkedData(data.name) === 7" src="img/boy.png">
+                <img ng-if="chunkedData(data.name) === 0" src="img/other.png">
+
+        <div class="row no-padding">
+        <div class="col text-left no-padding col-80">
+       <p  style="color:#3d3d29;font-size:14px;font-weight: 500">{{$index+1}}. รหัส {{data.stdID}}{{data.indexstd}}</p>
+          <p class="item-text-wrap " style="color:#0039e6;font-size:16px;font-weight: 500">{{data.name}}</p>
+          <span class="item-text-wrap " ng-repeat="t1 in data.id">
+         <span style="font-size:13px;text-decoration: none; border-bottom: 3px solid {{t1.color}};">{{t1.value}} {{t1.count}}</span> 
+          </span> 
+        </div>                          
+  <div class="col text-center no-padding">
+  <div class="row no-padding">
+        <div align="center" class="col text-center no-padding">
+  <span><p>เข้าเรียน</p></span>
+  <div class={{data.showclasscolor}} >
+      {{data.showpercent}}%
+  </div>
+</div>
+</div>
+      </ion-item>
+
+    </ion-list>
+    <!--</div>-->
+   </ion-content>
+	
+</ion-view>

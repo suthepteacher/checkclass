@@ -1,0 +1,23 @@
+<ion-popover-view>
+<!--     <ion-header-bar>
+      <h1 class="title">สถานะ</h1>
+    </ion-header-bar> -->
+    <ion-content>
+        <ion-list>
+            <ion-item ng-if ="data.statusname !== 'ไม่ระบุ'" href="" ng-click="goCheck(data.id,data.statusname,data.stdid,data.color)"  class="item item-icon-left" ng-repeat="data in dataoccurr">
+                    <i class="icon ion-arrow-right-b"></i> {{data.statusname}}
+            </ion-item>
+             <ion-item ng-if ="data.statusname === 'ไม่ระบุ'" href="" ng-click="goCheck(data.id,data.statusname,data.stdid,data.color)" class="item item-icon-left" ng-repeat="data in dataoccurr">
+                    <i class="icon ion-arrow-right-b"></i> {{data.statusname}}
+            </ion-item>
+
+         <!--<ion-item ng-repeat="item in items" 
+                  href="#/item/{{item.id}}"
+                  "
+                  ng-click="toggle(item)">
+          {{ item.id }}
+        </ion-item>-->
+        </ion-list>
+    
+    </ion-content>
+</ion-popover-view>

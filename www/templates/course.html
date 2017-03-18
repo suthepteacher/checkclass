@@ -1,0 +1,25 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBack()"><i class="icon ion-arrow-left-c" ></i></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button icon ion-plus-round" menu-toggle="right" ng-click="goAdd()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+       <ion-tabs class="tabs-bottom tabs-background-balanced tabs-positive tabs-icon-top" >
+        <ion-tab title="นักศึกษา" icon-on="ion-ios-people" icon-off="ion-ios-people" ui-sref="course.students">
+            <ion-nav-view name="tab-students"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="สถานะการเข้าเรียน" icon-on="ion-ios-filing" icon-off="ion-ios-filing" ui-sref="course.occurrence">
+            <ion-nav-view name="tab-occurrence"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="คาบเรียน" icon-on="ion-ios-clock" icon-off="ion-ios-clock" ui-sref="course.classattend">
+            <ion-nav-view  name="tab-class"></ion-nav-view>
+        </ion-tab>
+       </ion-tabs>
+        <div class = "card" ng-if="datas === undefined" class="no-results">
+            <p style="padding: 10px">No Courses Here.</p>
+        </div>
+    </ion-content>
+</ion-view>

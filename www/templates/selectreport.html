@@ -1,0 +1,21 @@
+<ion-view title="รายงานสถานะการเข้าเรียน">
+    <ion-nav-buttons>
+      <button class="button button-clear" ng-click="goClassAttendfromReport()"><i class="icon ion-arrow-left-c" ></i></button>
+    </ion-nav-buttons>
+    <ion-content padding="false" overflow-scroll="false">
+     <ion-list >
+     <ion-item class = "item item-thumbnail-left item-icon-right card item-text-wrap card no-padding" ng-click="getreportbyperson()">
+        <img src="img/person.png">
+        <div class="item-text-center4 item-text-wrap"><p style="font-size:18px"><strong>รายงานรายบุคคล</strong></p></div>
+        <i class="icon ion-arrow-right-b"></i> 
+       
+      </ion-item>
+      <ion-item class = "item item-thumbnail-left item-icon-right card  item-text-wrap no-padding"  ng-click="getreportbyperiod()">
+        <img src="img/class.png">
+        <div class="item-text-center4 item-text-wrap"><p style="font-size:18px"><strong>รายงานรายคาบ</strong></p></div>
+        <i class="icon ion-arrow-right-b"></i> 
+        
+      </ion-item>
+    </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,84 @@
+<ion-view view-title="สถานะการเข้าเรียน">
+	<ion-nav-buttons side="left">
+ 		<button class="button button-clear" ng-click="gotabStudent()"><i class="icon ion-arrow-left-c" ></i></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+<!--         <div ng-show = "datas.length">
+            <button class="button button-icon icon ion-ios-search" ng-click="showFilterBar()"></button>
+        </div> -->
+        <button class="button icon-left ion-plus-round" ng-click="goAddOccurrence()">
+        </button>
+  	</ion-nav-buttons>
+
+	<ion-content padding="false" overflow-scroll="false">
+		<ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()"></ion-refresher> 
+		<p class="text-center" ng-hide="dataoccurrLoaded">
+      <ion-spinner icon="spiral"></ion-spinner>
+  </p>
+<div ng-show="dataoccurrLoaded">
+    <div class = "card no-results" ng-hide="showoccurrintro">
+        <div class="item item-divider">
+				 <h2"><b>ไม่มีสถานะการเข้าเรียน</b></h2>
+			</div>
+  			<div class="item item-text-wrap">
+    			<h3 style="padding-left: 10px">กรุณาเพิ่มสถานะการเข้าเรียน</h3>
+    			<br/>
+    			<h3 style="padding-left: 10px">คลิกที่ปุ่ม 
+					<i class="icon ion-plus-round custom-icon1"></i> เพื่อเพิ่มสถานะการเข้าเรียน
+    			</h3> 
+  			</div>
+		</div>
+   <ion-list>
+          <ion-item class="item no-padding" >
+           <div class="row no-padding" >
+              <div class="col col-50 text-left padding" style="background-color: #d9d9d9;"><p class="item-text-center2"  style="font-size:17px;font-weight: 700;" > สถานะ</p></div>
+              <div class="col col-20 text-center padding" style="background-color: #d9d9d9;"><p style="font-size:17px;font-weight: 700;" >สี</p></div>
+             <div class="col col-30 text-center flexbox no-padding" style="background-color: #d9d9d9;">
+             <p style="font-size:14px;font-weight: 700;" class="wrap item-text-wrap">ถือเป็นการ</p><p style="font-size:14px;font-weight: 700;"> เข้าชั้นเรียน <i style="font-size:20px;" class="icon ion-ios-help no-padding"  ng-click="popInstuctionCheck.show($event)"> </i></p>
+              </div>
+       </div>
+       </ion-item>
+      
+     
+            <ion-item ng-if ="data.statusname !== 'ไม่ระบุ'" class="my-item" ng-repeat="data in dataoccurr">
+            <div class="row row-center my-item" >
+              <div align="center" class="col col-50 text-left " ><p class="padding-left"  style="font-size:15px" >{{data.statusname}}</p></div>
+              <div class="col col-20 text-center no-padding"><button class="button button-small no-padding" color-picker color-mode="name" color-box-no-border="true" ng-model="testColors.another" modal-title="โปรดเลือกสี" color-box="{{testColors.another || data.color}}" ng-change="updatecolor($index,{{data.id}},testColors.another)">
+                </button></div>
+             <div class="col col-30 text-center no-padding">
+             <label class="checkbox no-padding">
+                 <input type="checkbox"  class ="no-padding"
+                 ng-model="isChecked" 
+                 ng-true-value="1" ng-false-value="2"
+                 ng-checked="data.calpresent === 1"
+                 ng-click="update_setcalpresent(data.id,isChecked,$index)">
+               </label> </div>
+               <ion-option-button  ng-if ="data.statusname !== 'มา'" class="button-energized" ng-click="editOccurr(data)">แก้ไข</ion-option-button>
+                <ion-option-button ng-if ="data.statusname !== 'มา'" class="button-assertive" ng-click="removeItem($index,{{data.id}})">ลบ</ion-option-button>
+                </div>
+            </ion-item>
+
+        
+            <ion-item ng-if ="data.statusname === 'ไม่ระบุ'" class="my-item" ng-repeat="data in dataoccurr">
+            <div class="row row-center my-item" >
+              <div align="center" class="col col-50 text-left " ><p class="padding-left"  style="font-size:15px" >{{data.statusname}}</p></div>
+              <div class="col col-20 text-center no-padding"><button class="button button-small no-padding" color-picker color-mode="name" color-box-no-border="true" ng-model="testColors.another" modal-title="โปรดเลือกสี" color-box="{{testColors.another || data.color}}" ng-change="updatecolor($index,{{data.id}},testColors.another)">
+                </button></div>
+             <div class="col col-30 text-center no-padding">
+             <label class="checkbox no-padding">
+                 <input type="checkbox"  class ="no-padding"
+                 ng-model="isChecked" 
+                 ng-true-value="1" ng-false-value="2"
+                 ng-checked="data.calpresent === 1"
+                 ng-click="update_setcalpresent(data.id,isChecked,$index)">
+               </label> </div>
+               <ion-option-button  ng-if ="data.statusname !== 'ไม่ระบุ'" class="button-energized" ng-click="editOccurr(data)">แก้ไข</ion-option-button>
+                <ion-option-button ng-if ="data.statusname !== 'ไม่ระบุ'" class="button-assertive" ng-click="removeItem($index,{{data.id}})">ลบ</ion-option-button>
+                </div>
+            </ion-item>
+
+
+        </ion-list> 
+   </div>
+  </ion-content>
+</ion-view>

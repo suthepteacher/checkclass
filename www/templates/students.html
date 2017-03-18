@@ -1,0 +1,53 @@
+<ion-view view-title="รายชื่อนักศึกษา">
+
+	<ion-nav-buttons side="left">
+ 		<button class="button button-clear" ng-click="goBack()"><i class="icon ion-arrow-left-c" ></i></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+         <!--<button class="button button-icon icon ion-ios-search no-padding" ng-click="showFilterBar()"></button>-->&nbsp;
+        <button class="button icon-left ion-plus-round" ng-click="goAdd()">
+        </button>&nbsp;&nbsp;
+        <button class="button button-icon ion-android-more-vertical no-padding" ng-click="popStudent.show($event)">
+        </button>&nbsp;
+  	</ion-nav-buttons>
+	<ion-content padding="false" overflow-scroll="true">
+	<p class="text-center" ng-hide="dataLoaded">
+    	<ion-spinner icon="spiral"></ion-spinner>
+	</p>
+	<div ng-show="dataLoaded">
+		<ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()"></ion-refresher> 
+		<div class = "card no-results" ng-hide="showstudentintro">
+            <div class="item item-divider">
+				 <h2"><b>ไม่มีข้อมูลนักศึกษา</b></h2>
+			</div>
+  			<div class="item item-text-wrap">
+    			<h3 style="padding-left: 10px">กรุณาเพิ่มรายชื่อนักศึกษาก่อนเช็คชื่อเข้าชั้นเรียน</h3>
+    			<br/>
+    			<h3 style="padding-left: 10px">คลิกที่ปุ่ม 
+					<i class="icon ion-plus-round custom-icon1"></i> เพื่อเพิ่มรายชื่อนักศึกษา
+    			</h3> 
+  			</div>
+		</div>
+
+		<ion-list >
+			<ion-item class="item-avatar-left" collection-repeat="data in datas | filter:search.txt" type="item-text-wrap"  item-height="75px" item-width="100%">
+				<img ng-if="chunkedData(data.stdnamelastnameThai) === 2" src="img/girl.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 1" src="img/boy.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 4" src="img/girl.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 5" src="img/girl.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 3" src="img/boy.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 0" src="img/other.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 7" src="img/boy.png">
+        		<img ng-if="chunkedData(data.stdnamelastnameThai) === 8" src="img/girl.png">
+				<p style="font-size:14px;">{{$index+1}}. รหัส {{data.stdid}}</p>
+				<p style="font-size:16px;color:#0039e6">{{data.stdnamelastnameThai}}</p>
+				<div class="buttons-bar" >
+				<button  ng-repeat="t1 in data.ido" class="button button-stable button-small" style="float: bottom;background-color: {{t1.color}}" type="item-text-wrap">{{t1.count}}</button>
+						</div>
+				<ion-option-button class="button-energized" ng-click="editStudent(data)">แก้ไข</ion-option-button>
+				<ion-option-button class="button-assertive" ng-click="deleteStudent($index,data.id)">ลบ</ion-option-button>
+			</ion-item>
+		</ion-list>
+		</div>
+	</ion-content>
+</ion-view>

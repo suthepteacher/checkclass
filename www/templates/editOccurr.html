@@ -1,0 +1,35 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">แก้ไขสถานะการเข้าเรียน</h1>
+        <button ng-click="closeEditoccurr()"  class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+     <form class="list" name="form" >
+          <ion-item class="item item-button-right no-padding">
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">ชื่อสถานะการเข้าเรียน</span>
+                <input ng-model="put.statusname" type="text" placeholder="" required>
+            </label>
+             <label class="item item-input item-stacked-label">
+                <span class="input-label">กดปุ่มเพื่อเลือกสีหรือเปลี่ยนสี</span>
+            <div class="buttons">
+                
+                <button class="button button-assertive button-small" color-picker="" color-mode="name" ng-model="put.color"   hide-reset="true" modal-title="โปรดเลือกสี"  color-box="{{put.color }}"> 
+                </button>
+                </div>
+            </label>
+             <label class="checkbox padding-left">
+              <span class="input-label">ใช้คำนวณในการเข้าชั้นเรียน</span>
+                 <input type="checkbox"  
+                 ng-model="put.calpresent" 
+                 ng-true-value="1" ng-false-value="0"
+                 ng-checked="put.calpresent === 1"
+               </label> 
+            </ion-item>
+            <div class="padding-left padding-right">
+                <button ng-click="editsaveoccurr()" class="button button-assertive button-outline button-block" ng-disabled="form.$invalid"><i class="icon ion-ios-plus-outline">   แก้ไขสถานะการเข้าเรียน</i></button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>
